@@ -9,6 +9,7 @@ body {
   text-align: center;
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
+  color: #333333;
 }
 textarea {
   resize: none;
@@ -30,4 +31,35 @@ textarea {
   border-radius: 4px;
   padding: 10px;
   margin: 10px;
+}
+#error {
+  background-color: #e74c3c;
+  border-radius: 4px;
+  color: #fff;
+  width: 40%;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+a:hover {
+  color: #fff;
+}
+.answer {
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #3498db;
+  width: 40%;
+  margin: 4px;
+}
+.answer:hover {
+  color: #ffffff;
+  background-color: #3498db;
+  cursor: pointer;
+}
+.voted_for {
+  background-color: #2ecc71;
+  color: #fff;
+  border: 1px solid #2ecc71;
 }

@@ -1,1 +1,28 @@
-<h1>{{ ballot }}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ballot</title>
+  <link rel="stylesheet" href="../app.css">
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="../app.js"></script>
+
+</head>
+<body>
+
+<h2>{{ ballot.question }}</h2>
+<!-- I'm not even sorry -->
+<center>
+{% for key,value in ballot.answers[0] %}
+  {% if voted_for == loop.index0 %}
+  <a class='answer voted_for' href="/{{ballot.id}}/vote/{{loop.index0}}/" id="{{key}}-link">{{key}}</a>
+  {% else %}
+  <a class='answer' href="/{{ballot.id}}/vote/{{loop.index0}}/" id="{{key}}-link">{{key}}</a>
+  {% endif %}
+  {% if voted %}
+    <small>{{value}} votes</small>
+  {% endif %}
+  </div>
+{% endfor %}
+</center>
+</body>
+</html>

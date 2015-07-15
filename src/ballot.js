@@ -5,7 +5,7 @@ var Ballot = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    if (this.state.value === '') {
+    if (this.state.value === '' || this.state.question === '') {
       return alert("Can't be blank.");
     }
     var items = this.state.answers.concat([this.state.value]);
@@ -22,7 +22,7 @@ var Ballot = React.createClass({
     var createAnswer = function(text) {
       return (
         <div>
-          <input className='input' value={text} name="answers" onChange={this.onChange}></input>
+          <input className='input' value={text} name="answers" placeholder='put answer here....' onChange={this.onChange}></input>
           <br />
         </div>
       )
@@ -31,7 +31,7 @@ var Ballot = React.createClass({
       <div>
 
         <form  method="POST" action="/">
-          <textarea name="question" onChange={this.onChangeQuestion} value={this.state.question}></textarea>
+          <textarea name="question" onChange={this.onChangeQuestion} placeholder="put question here...."></textarea>
           <br />
           {this.state.answers.map(createAnswer)}
           <br />
