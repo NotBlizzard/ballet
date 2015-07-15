@@ -43,9 +43,12 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
   var question = req.body['question'];
   if (question.trim() === '') {
-    return res.render('hello.html', {errr: "Question cannot be blank."});
+    return res.render('hello.html', {error: "Question cannot be blank."});
   }
   var answers_temp = req.body.answers;
+  if (typeof req.body.answers === 'undefined') {
+    return res.render('hello.html', {error: "Answer cannot be blank."})
+  }
   var answers = {};
   for (var i = 0; i < answers_temp.length; ++i) {
     answers[answers_temp[i]] = 0;
