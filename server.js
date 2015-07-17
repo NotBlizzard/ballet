@@ -16,25 +16,21 @@ nunjucks.configure('views', {
 var connection = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/ballot');
 autoIncrement.initialize(connection);
 
-app.enable('trust proxy');
-
 var ballotSchema = new Schema({
   question: String,
   answers: [Schema.Types.Mixed],
   voted: [Schema.Types.Mixed]
 });
+
 ballotSchema.plugin(autoIncrement.plugin, 'Ballot')
 var Ballot = mongoose.model('Ballot', ballotSchema);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/build'));
 app.use(express.static(__dirname + '/src'));
-
-
 
 app.get('/', function(req, res) {
   res.render('hello.html');
