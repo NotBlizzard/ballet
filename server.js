@@ -13,6 +13,8 @@ nunjucks.configure('views', {
   express: app
 });
 
+app.enable('trust proxy');
+
 var connection = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/ballot');
 autoIncrement.initialize(connection);
 
